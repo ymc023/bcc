@@ -462,55 +462,55 @@ class BccAll():
 
 if __name__ == '__main__':
     '''
-        #初始化实例，传入access_id, access_key,
-        bmc_host（即服务器所在区的地址,Ex:https://cloud.baidu.com/doc/BCC/s/0jwvyo603）
-        client =BccAll(acc_id="TAKf8clU",acc_key="0095c4c5cbf1ad62",bmc_host="bcc.su.baidubce.com")
+    #初始化实例，传入access_id, access_key,
+    bcm_host（即服务器所在区的地址,Ex:https://cloud.baidu.com/doc/BCC/s/0jwvyo603）
+    client =BccAll(acc_id="TAKf8clU",acc_key="0095c4c5cbf1ad62",bcm_host="bcc.su.baidubce.com")
 
-        #查询所有虚拟机列表
-        data = client.getListInstances()
+    #查询所有虚拟机列表
+    data = client.getListInstances()
 
-        #续费状态查询,return type dict
-        newdata = client.getInstanceRenewStatus(data=data)
-        print(json.dumps(newdata,indent=4))
+    #续费状态查询,return type dict
+    newdata = client.getInstanceRenewStatus(data=data)
+    print(json.dumps(newdata,indent=4))
 
-        #查询所有id,return type list
-        newdata = client.getAllInstanceID(data)
-        print(newdata)
+    #查询所有id,return type list
+    newdata = client.getAllInstanceID(data)
+    print(newdata)
 
-        #根据ID查询虚拟机详情
-        newdata = client.getInstanceDetail(instance_id="i-fyuIL")
-        print(newdata)
+    #根据ID查询虚拟机详情
+    newdata = client.getInstanceDetail(instance_id="i-fyuIL")
+    print(newdata)
 
-        #根据ID查内网IP,return type  str
-        newdata = client.getInstanceInternalIP(instance_id="i-IULEY")
-        print(newdata)
+    #根据ID查内网IP,return type  str
+    newdata = client.getInstanceInternalIP(instance_id="i-IULEY")
+    print(newdata)
 
-        #批量查询VNC地址,return type dict
-        newdata = client.getInstanceInternalIP(instance_id=["i-bnr5","i-fEY"])
-        newdata =client.getInstanceVNC(instance_id=client.getAllInstanceID(data))
-        print(newdata)
+    #批量查询VNC地址,return type dict
+    newdata = client.getInstanceInternalIP(instance_id=["i-bnr5","i-fEY"])
+    newdata =client.getInstanceVNC(instance_id=client.getAllInstanceID(data))
+    print(newdata)
 
-        #resize 扩缩容
-        newdata =client.setInstanceResize(instance_id="i-FdNY",destcpu=2,destmem=2)
+    #resize 扩缩容
+    newdata =client.setInstanceResize(instance_id="i-FdNY",destcpu=2,destmem=2)
 
-        #实例开机(start)，关机(stop,可带参数force_stop=True)，重启(restart),重装(rebuild),释放(release)
-        cmd=rebuild时，必须提供(
+    #实例开机(start)，关机(stop,可带参数force_stop=True)，重启(restart),重装(rebuild),释放(release)
+    cmd=rebuild时，必须提供(
                                imageid,
                                admin_pass
                                有默认值
                                )
-        newdata = client.setInstanceCommand(
+    newdata = client.setInstanceCommand(
                                             instance_id="i-fyEY",cmd="start/stop/restart/rebuild/release")
 
-        newdata = client.setInstanceCommand(
+    newdata = client.setInstanceCommand(
                                             instance_id="i-FdN5",cmd="release")
 
-        #
-        paid_billing:Postpaid/Prepaid
-        #
-        auto_renew_time=0/1自动续费１个月
+       
+    #paid_billing:Postpaid/Prepaid
+        
+    auto_renew_time=0/1自动续费１个月
 
-        newdata = client.createInstance(
+    newdata = client.createInstance(
             paid_billing="Postpaid",
             root_size_in_gb=20,
             instance_name="test2",
